@@ -5,35 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14aa17c1-5018-40a0-b9dd-c5bccc346261" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MIR4VA-Chat-Bot.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chatbot_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot_setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/33a61d67-f246-4fd3-8e4f-b1c4dd99734e/data_level0.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/33a61d67-f246-4fd3-8e4f-b1c4dd99734e/header.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/33a61d67-f246-4fd3-8e4f-b1c4dd99734e/length.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/33a61d67-f246-4fd3-8e4f-b1c4dd99734e/link_lists.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/data_level0.bin" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/data_level0.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/header.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/length.bin" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/length.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/link_lists.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/chroma.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db_files/chroma.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/d9f7e8b9-8d8c-4a50-9f98-e32dbb427010/data_level0.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/d9f7e8b9-8d8c-4a50-9f98-e32dbb427010/header.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/d9f7e8b9-8d8c-4a50-9f98-e32dbb427010/length.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chroma_db_files/d9f7e8b9-8d8c-4a50-9f98-e32dbb427010/link_lists.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/MIR4VA Chatbot ve Projeleri – Öğrenme ve Tanıtım P.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/OOP_Hafta_1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/OOP_Hafta_2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/OOP_Hafta_3_1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/OOP_Hafta_3_2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/OOP_Hafta_4_1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/OOP_Hafta_4_2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +64,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Reverting in main",
+    "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "C:/Users/erdem/OneDrive/Masaüstü/MIR4VA-Chat-Bot",
     "list.type.of.created.stylesheet": "CSS",
@@ -172,7 +145,7 @@
       <workItem from="1761056999140" duration="11458000" />
       <workItem from="1761082991583" duration="195000" />
       <workItem from="1761083202474" duration="162000" />
-      <workItem from="1761083383722" duration="346000" />
+      <workItem from="1761083383722" duration="1300000" />
     </task>
     <servers />
   </component>
@@ -196,5 +169,6 @@
     <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$MIR4VA_Chat_Bot.coverage" NAME="MIR4VA-Chat-Bot Coverage Results" MODIFIED="1761083137803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$deneme.coverage" NAME="deneme Coverage Results" MODIFIED="1760986703112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$chat_bot.coverage" NAME="chat_bot Coverage Results" MODIFIED="1760722482498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/chatbot_setup_py$MIR4VA_Chat_Bot.coverage" NAME="MIR4VA-Chat-Bot Coverage Results" MODIFIED="1761083768694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
