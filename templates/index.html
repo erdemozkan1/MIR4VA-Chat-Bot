@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIR4VA - OOP Öğreticisi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MIR4VA - OOP Öğreticisi</h1>
+
+        <div class="temperature-selection">
+            <label for="temperature-slider">Üretkenlik Seviyesi (Temperature):</label>
+            <input type="range" id="temperature-slider" min="0.0" max="1.0" step="0.05" value="0.35">
+            <span id="temperature-value">0.35 (Orta)</span>
+            <p class="temp-info">Düşük (0-0.3): Güvenilir | Orta (0.4-0.7): Yaratıcı ama tutarlı | Yüksek (0.8-1): Beklenmedik</p>
+        </div>
+
+        <div class="chat-box" id="chat-box">
+            </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Sorunuzu buraya yazın..." autofocus>
+            <button id="send-button">Gönder</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
