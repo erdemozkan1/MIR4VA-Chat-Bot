@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14aa17c1-5018-40a0-b9dd-c5bccc346261" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/data_level0.bin" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/data_level0.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/length.bin" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db_files/565799d7-5fab-41e5-acec-5f17afc71a15/length.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chroma_db_files/chroma.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/chroma_db_files/chroma.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +101,7 @@
       <workItem from="1761040396868" duration="2697000" />
       <workItem from="1761050319471" duration="4717000" />
       <workItem from="1761056103308" duration="860000" />
-      <workItem from="1761056999140" duration="2431000" />
+      <workItem from="1761056999140" duration="3722000" />
     </task>
     <servers />
   </component>
@@ -106,7 +110,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$data.coverage" NAME="data Coverage Results" MODIFIED="1761057970665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$chatbot_setup.coverage" NAME="chatbot_setup Coverage Results" MODIFIED="1761057989650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$chatbot_setup.coverage" NAME="chatbot_setup Coverage Results" MODIFIED="1761072884941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$deneme.coverage" NAME="deneme Coverage Results" MODIFIED="1760986703112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MIR4VA_Chat_Bot$chat_bot.coverage" NAME="chat_bot Coverage Results" MODIFIED="1760722482498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
