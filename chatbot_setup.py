@@ -14,11 +14,16 @@ import chromadb
 #load_dotenv() ( RAİLWAYde başlatılması için yorum satırı haline getirdim
 api_key = os.getenv('GEMINI_API_KEY')
 
-#if not api_key:
+if api_key:
+    genai.configure(api_key=api_key)
     # API anahtarı yoksa hata fırlatmak daha iyi bir yaklaşımdır.
     #raise ValueError("GEMINI_API_KEY ortam değişkeni ayarlanmadı.")
+    print("INFO: Gemini API anahtarı başarıyla yüklendi ve kullanıma hazır.")
+else:
+    print("UYARI: GEMINI_API_KEY ortam değişkeni Railway'den alınamadı.")
+    print("Uygulama genel sorgular için başlatılıyor (RAG çalışmayabilir).")
 
-genai.configure(api_key=api_key)
+#genai.configure(api_key=api_key) ( apı key hatası aldığım için yorum satırına aldım)
 app = Flask(__name__)  # Flask uygulamasını başlat
 CORS(app)  # Web sitenizden gelecek istekler için CORS'u etkinleştirin
 
