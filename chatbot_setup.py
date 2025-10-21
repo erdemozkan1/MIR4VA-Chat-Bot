@@ -14,14 +14,15 @@ load_dotenv() # Railway'de çalışsa bile, lokalde çalışması için bırakı
 # chatbot_setup.py dosyasındaki mevcut api_key satırını değiştirin:
 
 # Önce GOOGLE_API_KEY'i dene, yoksa GEMINI_API_KEY'i dene.
-#api_key = os.getenv('GOOGLE_API_KEY') or os.getenv('GEMINI_API_KEY')
+api_key = os.getenv('GOOGLE_API_KEY') or os.getenv('GEMINI_API_KEY')
 # *** RAG VERİTABANI YOLU ***
 # data.py ile aynı mutlak yolu kullanıyoruz.
 CHROMA_PATH = os.path.abspath("./chroma_db_files")
 COLLECTION_NAME = "oop_bootcamp_dokumanlari"
+print("Railway GEMINI_API_KEY:", os.getenv("GEMINI_API_KEY"))
 
 # API Anahtarı Kontrolü ve Yapılandırma
-"""if api_key:
+if api_key:
     # API anahtarı varsa, Gemini SDK'yı yapılandır
     genai.configure(api_key=api_key)
     print("INFO: Gemini API anahtarı başarıyla yüklendi ve kullanıma hazır.")
@@ -29,7 +30,7 @@ COLLECTION_NAME = "oop_bootcamp_dokumanlari"
     # Anahtar yoksa, sadece uyarı veriyoruz (çöküşü engellemek için)
     print("UYARI: GEMINI_API_KEY ortam değişkeni Railway'den alınamadı.")
     print("Uygulama genel sorgular için başlatılıyor (Gemini API gerektiren kısımlar hata verebilir).")
-"""
+
 
 # ChromaDB istemcisini başlat ve koleksiyonu yükle
 try:
