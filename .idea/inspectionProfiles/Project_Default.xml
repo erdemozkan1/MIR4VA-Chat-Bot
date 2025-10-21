@@ -1,0 +1,21 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="google-ai-generativelanguage" />
+          <option value="google-api-core" />
+          <option value="google-api-python-client" />
+          <option value="google-auth-httplib2" />
+          <option value="google-generativeai" />
+          <option value="grpcio-status" />
+          <option value="httplib2" />
+          <option value="proto-plus" />
+          <option value="pyparsing" />
+          <option value="uritemplate" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

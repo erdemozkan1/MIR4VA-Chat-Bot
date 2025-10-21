@@ -11,7 +11,7 @@ import chromadb
 # embedding_functions kullanmıyoruz, çünkü uyumsuzlukları manuel aştık.
 
 # Flask ile web sunucusu başlatılıyor
-load_dotenv()
+#load_dotenv()
 api_key = os.getenv('GEMINI_API_KEY')
 
 if not api_key:
@@ -32,7 +32,7 @@ COLLECTION_NAME = "oop_bootcamp_dokumanlari"  # data.py'de oluşturulan koleksiy
 # data.py ile veritabanı dosyaları oluşturulduğu için, burada sadece o koleksiyonu yüklüyoruz.
 try:
     # ChromaDB istemcisini başlat (Veritabanı dosyaları projede yerel olarak depolanır)
-    client = chromadb.Client()
+    client = chromadb.PersistentClient(path="./chroma_db_files")
     # Koleksiyonu alıyoruz. (Embedding fonksiyonu tekrar belirtilmez, veritabanı onu hatırlar)
     rag_collection = client.get_collection(name=COLLECTION_NAME)
     print("Vektör Veritabanı başarıyla yüklendi. RAG aktif.")

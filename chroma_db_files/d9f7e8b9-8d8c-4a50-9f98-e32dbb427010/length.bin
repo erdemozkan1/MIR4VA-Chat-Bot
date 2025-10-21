@@ -1,1 +1,0 @@
-invalid type: string "aba miras_alır Araç uygular Sürülebilir {\nyapıcı(başlangıçHız: tamsayı) {\nsuper(başlangıçHız)\n}\ngenel metod hareketEt() {\nyaz \"Araba hareket ediyor , hız: \", getHız()\n}\ngenel metod sür() {\nsetHız(getHız() + 10)\nyaz \"Araba hızlanıyor, yeni hız: \", getHız()\n}\ngenel metod dur() {\nsetHız(0)\nyaz \"Araba durdu\"\n}\n}\nana_program {\ntin\nA
