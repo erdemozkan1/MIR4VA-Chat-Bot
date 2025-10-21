@@ -4,55 +4,49 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 import os
 from flask import Flask, request, render_template, jsonify
-from flask_cors import CORS # CORS entegrasyonu (web sitesi bağlantısı için gerekli)
+from flask_cors import CORS
 
 # RAG (Retrieval Augmented Generation) için gerekli kütüphaneler
 import chromadb
-# embedding_functions kullanmıyoruz, çünkü uyumsuzlukları manuel aştık.
 
 # Flask ile web sunucusu başlatılıyor
-#load_dotenv() ( RAİLWAYde başlatılması için yorum satırı haline getirdim
+load_dotenv() # Railway'de çalışsa bile, lokalde çalışması için bırakılabilir.
 api_key = os.getenv('GEMINI_API_KEY')
 
+# *** RAG VERİTABANI YOLU ***
+# data.py ile aynı mutlak yolu kullanıyoruz.
+CHROMA_PATH = os.path.abspath("./chroma_db_files")
+COLLECTION_NAME = "oop_bootcamp_dokumanlari"
+
+# API Anahtarı Kontrolü ve Yapılandırma
 if api_key:
+    # API anahtarı varsa, Gemini SDK'yı yapılandır
     genai.configure(api_key=api_key)
-    # API anahtarı yoksa hata fırlatmak daha iyi bir yaklaşımdır.
-    #raise ValueError("GEMINI_API_KEY ortam değişkeni ayarlanmadı.")
     print("INFO: Gemini API anahtarı başarıyla yüklendi ve kullanıma hazır.")
 else:
+    # Anahtar yoksa, sadece uyarı veriyoruz (çöküşü engellemek için)
     print("UYARI: GEMINI_API_KEY ortam değişkeni Railway'den alınamadı.")
-    print("Uygulama genel sorgular için başlatılıyor (RAG çalışmayabilir).")
+    print("Uygulama genel sorgular için başlatılıyor (Gemini API gerektiren kısımlar hata verebilir).")
 
-#genai.configure(api_key=api_key) ( apı key hatası aldığım için yorum satırına aldım)
-app = Flask(__name__)  # Flask uygulamasını başlat
-CORS(app)  # Web sitenizden gelecek istekler için CORS'u etkinleştirin
 
-# ----------------------------------------------------
-# RAG AYARLARI VE VERİTABANI BAĞLANTISI
-# ----------------------------------------------------
-EMBEDDING_MODEL_NAME = 'text-embedding-004' # data.py'de kullanılan model
-COLLECTION_NAME = "oop_bootcamp_dokumanlari"  # data.py'de oluşturulan koleksiyon adı
-
-# *** ÖNEMLİ DÜZELTME: RAG'a Bağlanma ***
-# data.py ile veritabanı dosyaları oluşturulduğu için, burada sadece o koleksiyonu yüklüyoruz.
+# ChromaDB istemcisini başlat ve koleksiyonu yükle
 try:
-    # ChromaDB istemcisini başlat (Veritabanı dosyaları projede yerel olarak depolanır)
-    client = chromadb.PersistentClient(path="./chroma_db_files")
-    # Koleksiyonu alıyoruz. (Embedding fonksiyonu tekrar belirtilmez, veritabanı onu hatırlar)
+    client = chromadb.PersistentClient(path=CHROMA_PATH)
+    # Collection'ı alırken Embedding fonksiyonu belirtmiyoruz, çünkü sorguyu manuel yapacağız.
     rag_collection = client.get_collection(name=COLLECTION_NAME)
     print("Vektör Veritabanı başarıyla yüklendi. RAG aktif.")
 except Exception as e:
-    # Hata durumunda RAG'i devre dışı bırakır ama uygulama çökmeye devam eder
+    # Bu genellikle dosya yolu hatası veya dosya bulunamadı hatasıdır.
     print(f"HATA: RAG veritabanı yüklenemedi: {e}. Lütfen 'python data.py' dosyasını kontrol edin.")
-    # Uygulama yine de genel sohbet için başlatılacak
     rag_collection = None
 
 
+app = Flask(__name__)
+CORS(app)
+
 # Yapay Zeka Modelini Başlatma Fonksiyonu
 def get_gemini_model(temperature_value):
-    """
-    Kullanıcının seçtiği temperature değeri ile model konfigürasyonunu ayarlar ve modeli döndürür.
-    """
+    # ... (Model konfigürasyonu ve Sistem Prompt'u aynı kalır) ...
     try:
         temp = max(0.0, min(1.0, float(temperature_value)))
     except (ValueError, TypeError):
@@ -64,7 +58,6 @@ def get_gemini_model(temperature_value):
         'top_p': 0.82,
         'top_k': 40,
     }
-    # Sistem istemi (SYSTEM_PROMPT), RAG kullanımına göre güncellendi
     SYSTEM_PROMPT = """Sen bir OOP (Nesne Tabanlı Programlama) öğreticisisin. 
 Kullanıcının sorularına cevap verirken, sana ek olarak sağlanan BAĞLAM (özel ders notları) varsa, öncelikle bu bilgiyi kullan. 
 Eğer bağlamda yeterli bilgi yoksa, genel OOP bilginle cevap ver. 
@@ -82,13 +75,14 @@ Sohbet etmek isterlerse samimi bir şekilde sohbet et. """
 # 1. Ana Sayfa Rotası (Frontend'i gösterecek)
 @app.route('/')
 def index():
-    # 'templates' klasöründeki index.html dosyasını döndürür
     return render_template('index.html')
 
 
 # 2. API Rotası (Sohbetin gerçekleştiği yer)
 @app.route('/chat', methods=['POST'])
 def chat_endpoint():
+    global api_key, rag_collection
+
     data = request.get_json()
     mesaj = data.get('mesaj', '')
     gecmis = data.get('gecmis', [])
@@ -97,28 +91,34 @@ def chat_endpoint():
     if not mesaj or mesaj.strip() == "":
         return jsonify({"cevap": "Mesaj Giriniz"}), 400
 
+    # API Anahtarı yoksa (Railway'den gelmediyse), hemen hata döndür
+    if not api_key:
+        print("KRİTİK HATA: API Anahtarı eksik, Gemini çağrılamaz.")
+        # Bu, chatbot'un verdiği "Bir hata oluştu" cevabının kaynağıdır.
+        return jsonify({"cevap": "API Anahtarı eksik. Lütfen proje yöneticinize başvurun."}), 500
+
     model = get_gemini_model(kullanici_temp)
 
     # ----------------------------------------------------
-    # RAG İŞ AKIŞI: İLGİLİ BAĞLAMI BULMA VE PROMPT'A EKLEME
+    # RAG İŞ AKIŞI: İLGİLİ BAĞLAMI BULMA
     # ----------------------------------------------------
     ek_baglam = ""
     if rag_collection:
         try:
-            # 1. Kullanıcı Mesajını Vektöre Çevir
-            # Sorgu Vektörünü doğrudan Gemini API ile oluşturuyoruz
-            sorgu_vektoru = genai.embed_content(
-                model=EMBEDDING_MODEL_NAME,
+            # 1. Kullanıcı Mesajını Vektöre Çevir (API Key'i manuel iletiyoruz)
+            sorgu_vektoru_result = genai.embed_content(
+                model='text-embedding-004',
                 content=mesaj.strip(),
-                task_type="RETRIEVAL_QUERY" # Sorgulama görevi için
-            )['embedding']
+                task_type="RETRIEVAL_QUERY",
+                # API KEY'i burada manuel olarak iletiyoruz!
+                api_key=api_key
+            )
+            sorgu_vektoru = sorgu_vektoru_result['embedding']
 
             # 2. Vektör DB'de Arama Yap
-            # ChromaDB'den vektör bazlı sorgu ile en alakalı parçaları çek
             sonuclar = rag_collection.query(
                 query_embeddings=[sorgu_vektoru],
-                n_results=3,  # En alakalı 3 parçayı getir
-                include=['documents']
+                n_results=3
             )
 
             # 3. Çekilen Bilgileri Prompt'a Eklemek İçin Hazırla
@@ -130,18 +130,16 @@ def chat_endpoint():
                 ek_baglam += "### BAĞLAM BİTİŞ ###\n"
 
         except Exception as e:
-            # Hata durumunda (örneğin API anahtarı geçersizse veya ağ hatası varsa)
-            print(f"RAG Arama İşleminde Hata: {e}. Bağlam eklenmiyor.")
+            # Bu hata genellikle API kotası veya ağ sorunudur
+            print(f"RAG Arama İşleminde KRİTİK HATA: {e}. Bağlam eklenmiyor.")
             ek_baglam = ""
 
     # ----------------------------------------------------
     # SON PROMPT VE GÖNDERİM
     # ----------------------------------------------------
 
-    # RAG bağlamını içeren yeni mesaj oluşturulur
     yeni_mesaj = f"{ek_baglam}Kullanıcının sorusu: {mesaj.strip()}"
 
-    # Sohbet Geçmişini Hazırla
     chat_gecmisi = []
     for kulanici, bot in gecmis:
         if kulanici and bot:
@@ -150,16 +148,17 @@ def chat_endpoint():
 
     try:
         chat = model.start_chat(history=chat_gecmisi)
-        # RAG bağlamı ile zenginleştirilmiş mesajı gönder
         response = chat.send_message(yeni_mesaj)
 
         # Cevabı JSON olarak döndür
         return jsonify({"cevap": response.text})
     except Exception as e:
+        # API anahtarı eksikliği veya kota aşımı gibi nihai hatalar buraya düşer.
         print(f"Hata: {e}")
-        return jsonify({"cevap": "Bir hata oluştu. Lütfen tekrar deneyin."}), 500
+        # Uygulamanın çökmeyen, genel hata mesajı
+        return jsonify({"cevap": "Bir hata oluştu. Lütfen Railway loglarını kontrol edin."}), 500
 
 
 if __name__ == '__main__':
     # Web uygulamasını başlat
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=True)
