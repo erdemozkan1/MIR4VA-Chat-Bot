@@ -11,8 +11,10 @@ import chromadb
 
 # Flask ile web sunucusu başlatılıyor
 load_dotenv() # Railway'de çalışsa bile, lokalde çalışması için bırakılabilir.
-api_key = os.getenv('GEMINI_API_KEY')
+# chatbot_setup.py dosyasındaki mevcut api_key satırını değiştirin:
 
+# Önce GOOGLE_API_KEY'i dene, yoksa GEMINI_API_KEY'i dene.
+api_key = os.getenv('GOOGLE_API_KEY') or os.getenv('GEMINI_API_KEY')
 # *** RAG VERİTABANI YOLU ***
 # data.py ile aynı mutlak yolu kullanıyoruz.
 CHROMA_PATH = os.path.abspath("./chroma_db_files")
