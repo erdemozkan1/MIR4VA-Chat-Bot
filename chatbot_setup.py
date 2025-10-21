@@ -11,7 +11,7 @@ import chromadb
 # embedding_functions kullanmıyoruz, çünkü uyumsuzlukları manuel aştık.
 
 # Flask ile web sunucusu başlatılıyor
-load_dotenv()
+#load_dotenv() ( RAİLWAYde başlatılması için yorum satırı haline getirdim
 api_key = os.getenv('GEMINI_API_KEY')
 
 if not api_key:
