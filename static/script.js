@@ -53,7 +53,7 @@ async function sendMessage() {
 
     // 3. Backend'e isteği gönder
     try {
-        const response = await fetch('https://mir4va-chatbot-main.up.railway.app/', {
+        const response = await fetch('https://mir4va-chatbot-main.up.railway.app/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
