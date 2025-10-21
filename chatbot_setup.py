@@ -14,9 +14,9 @@ import chromadb
 #load_dotenv() ( RAİLWAYde başlatılması için yorum satırı haline getirdim
 api_key = os.getenv('GEMINI_API_KEY')
 
-if not api_key:
+#if not api_key:
     # API anahtarı yoksa hata fırlatmak daha iyi bir yaklaşımdır.
-    raise ValueError("GEMINI_API_KEY ortam değişkeni ayarlanmadı.")
+    #raise ValueError("GEMINI_API_KEY ortam değişkeni ayarlanmadı.")
 
 genai.configure(api_key=api_key)
 app = Flask(__name__)  # Flask uygulamasını başlat
