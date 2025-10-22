@@ -10,6 +10,8 @@ Proje aynı zamanda kullanıcı ihtiyaçlarını analiz etmek için bir **anket 
 
 Web sitesi: [MIR4VA](https://mir4va.com)
 
+Proje Yakın Zamanda kendi web sitemizde yayınca olacaktır !.
+
 ## Kullanılan Teknolojiler
 
 - Python 3.13  
