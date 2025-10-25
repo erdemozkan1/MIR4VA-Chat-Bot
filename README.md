@@ -24,7 +24,7 @@ Proje Yakın Zamanda kendi web sitemizde yayınca olacaktır !.
 ## Veri Seti
 
 Bu proje için özel bir veri seti kullanılmamıştır. Chatbot, OOP konusuna dair **ders notları ve PDF dokümanlar** üzerinden bağlam çıkarır ve kullanıcı sorularına yanıt üretir. Form aracılığıyla toplanan istatistikler de kullanım amacının belirlenmesinde referans olarak kullanılmıştır.
-
+OOP notları için Dr. Ali Osman ÇIBIKDİKEN'in ders notları kullanılmıştır.
 ## Kullanılan Yöntemler
 
 - **RAG (Retrieval Augmented Generation):** Kullanıcının sorusuna en alakalı dokümanları çekerek modele ek bağlam sağlar.  
@@ -48,8 +48,14 @@ Bu proje için özel bir veri seti kullanılmamıştır. Chatbot, OOP konusuna d
 
 ## Deployment
 
+
 Proje Railway üzerinde deploy edilmiştir ve canlı olarak kullanılabilir:  
 [https://mir4va-chatbot-main.up.railway.app](https://mir4va-chatbot-main.up.railway.app)
+
+## Teşekkürler
+
+Nesne Tabanlı Programlama için veri seti hazırlamamda yardımcı olan Dr. Ali Osman ÇIBIKDİKEN hocama
+GENERATIVE AI eğitimleri için GLOBALAIHUB mentorlarına ve eğitmenlerine teşekkürlerimi sunarım
 
 ## Kurulum ve Çalıştırma
 
